@@ -19,8 +19,10 @@ class Song
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $author = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $genre = null;
+    #[ORM\ManyToOne(targetEntity: Genre::class)]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Genre $genre = null;
+
 
     public function getId(): ?int
     {
@@ -51,12 +53,12 @@ class Song
         return $this;
     }
 
-    public function getGenre(): ?string
+    public function getGenre(): ?Genre
     {
         return $this->genre;
     }
 
-    public function setGenre(string $genre): static
+    public function setGenre(Genre $genre): static
     {
         $this->genre = $genre;
 
