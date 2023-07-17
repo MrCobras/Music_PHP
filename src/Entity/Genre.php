@@ -6,6 +6,7 @@ use App\Repository\GenreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: GenreRepository::class)]
 class Genre
@@ -15,6 +16,7 @@ class Genre
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups("genre")]
     #[ORM\Column(length: 30)]
     private ?string $name = null;
 
